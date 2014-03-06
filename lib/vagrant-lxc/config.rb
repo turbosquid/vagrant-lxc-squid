@@ -61,7 +61,7 @@ module Vagrant
       def finalize!
         @sudo_wrapper = nil if @sudo_wrapper == UNSET_VALUE
         @container_name = nil if @container_name == UNSET_VALUE
-        @backingstore = "none" if @backingstore == UNSET_VALUE
+        @backingstore = "dir" if @backingstore == UNSET_VALUE
         @existing_container_name = nil if @existing_container_name == UNSET_VALUE
       end
 
