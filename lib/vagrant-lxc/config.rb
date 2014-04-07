@@ -23,6 +23,7 @@ module Vagrant
       attr_accessor :container_name
 
       attr_accessor :existing_container_name
+      attr_accessor :no_snapshot
 
        # A String that names the container to clone from
       def clone_container_from(name)
@@ -36,6 +37,7 @@ module Vagrant
         @backingstore_options = []
         @sudo_wrapper   = UNSET_VALUE
         @container_name = UNSET_VALUE
+        @no_snapshot = UNSET_VALUE
       end
 
       # Customize the container by calling `lxc-start` with the given
@@ -63,6 +65,7 @@ module Vagrant
         @container_name = nil if @container_name == UNSET_VALUE
         @backingstore = "dir" if @backingstore == UNSET_VALUE
         @existing_container_name = nil if @existing_container_name == UNSET_VALUE
+        @no_snapshot = false if @no_snapshot == UNSET_VALUE
       end
 
       def validate(machine)

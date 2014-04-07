@@ -68,11 +68,17 @@ module Vagrant
           end
         end
 
-        def clone(existing_container_name, name)
-          run :clone,
-              '-s',
-              '-o', existing_container_name,
-              '-n', @name
+        def clone(existing_container_name, name, no_snapshot = false)
+          if no_snapshot
+            run :clone,
+                '-o', existing_container_name,
+                '-n', @name
+          else
+            run :clone,
+                '-o', existing_container_name,
+                '-s',
+                '-n', @name
+          end
         end
 
         def destroy

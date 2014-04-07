@@ -25,7 +25,7 @@ module Vagrant
           end
 
           if config.existing_container_name
-            env[:machine].provider.driver.clone(config.existing_container_name, container_name)
+            env[:machine].provider.driver.clone(config.existing_container_name, container_name, config.no_snapshot)
           else
             env[:machine].provider.driver.create(
               container_name,
