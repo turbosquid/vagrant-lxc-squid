@@ -56,10 +56,10 @@ module Vagrant
         end
       end
 
-      def clone(existing_container_name, name, no_snapshot = false)
+      def clone(existing_container_name, name, snapshot)
         @cli.name = name
         @logger.debug "Cloning container..."
-        @cli.clone(existing_container_name, name, no_snapshot)
+        @cli.clone(existing_container_name, name, snapshot)
       end
 
       def share_folders(folders)

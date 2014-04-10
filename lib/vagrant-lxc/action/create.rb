@@ -25,7 +25,8 @@ module Vagrant
           end
 
           if config.existing_container_name
-            env[:machine].provider.driver.clone(config.existing_container_name, container_name, config.no_snapshot)
+            snapshot = config.backingstore && config.backingstore != 'dir'
+            env[:machine].provider.driver.clone(config.existing_container_name, container_name, snapshot)
           else
             env[:machine].provider.driver.create(
               container_name,
